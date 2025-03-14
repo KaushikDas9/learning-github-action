@@ -1,8 +1,12 @@
-name: First time Greeting
+name: This is name
+run-name: This is run-name
 on: [push]
 jobs: 
     build:
         runs-on: ubuntu-latest
         steps:
-            - name: First Hello World
-              run: echo "Hello World"
+            - name: This is first step name
+              run: echo "Hello World" 
+            - name: See Github Action
+              run: echo "${{github}}"
+            
