@@ -8,5 +8,5 @@ jobs:
             - name: This is first step name
               run: echo "Hello World" 
             - name: See Github Action
-              run: echo "${{github}}"
+              run: echo "${{toJson(github)}}"
             
