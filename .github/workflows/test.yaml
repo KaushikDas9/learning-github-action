@@ -2,10 +2,15 @@ name: Run all Tests
 run-name: Run all test cases
 on: [push,workflow_dispatch]
 jobs:
-    build:
+    test:
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v4
+        - uses: actions/cache@v4
+          id: cache
+          with: 
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
         - uses: actions/setup-node@v4
           with:
             node-version: 20
@@ -13,3 +18,19 @@ jobs:
           run: npm -v
         - run: npm ci
         - run: npm run test
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v4
+        - uses: actions/cache@v4
+          id: cache
+          with: 
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        - uses: actions/setup-node@v4
+          with:
+            node-version: 20  
+        - name: node install
+          run: npm ci      
+        - name: run deploy
+          run: npm run build 
