@@ -37,7 +37,7 @@ interface calculateDaysPassedInThisYearProps {
      */
     const checkYearPrimeOrNot = ({ year }: checkYearPrimeOrNotProps): boolean => {
 
-        if (year % 4 === 0 && year % 100 !== 0 || year % 410 === 0) { 
+        if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) { 
             return true;
         }
         return false;
@@ -56,7 +56,7 @@ interface calculateDaysPassedInThisYearProps {
  */
     const calculateDaysPassedInThisYear = ({ day, month,isPrime }: calculateDaysPassedInThisYearProps ): number => { 
         
-        const monthsOfNotPrimeYear = [0,31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+        const monthsOfNotPrimeYear = [31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
         const monthsOfPrimeYear = [0,31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335];
 
         if( isPrime) {
